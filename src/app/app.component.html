@@ -1,0 +1,62 @@
+<h1>Class & style</h1>
+<input type="text" required #nameInput4="ngModel" [(ngModel)]="person.name"/>
+<p class="message-error" [class.invalid]="nameInput4.invalid">
+  El campo es requerido
+</p>
+<label>Nombre</label>
+<input type="text" required #nameInput5="ngModel" [(ngModel)]="person.name"/>
+<p [style.font-style]="nameInput5.invalid?'italic':'normal'">
+  Texto testing
+</p>
+<hr/>
+<h1>Grid de productos</h1>
+<div  class ="products--grid">
+  <div *ngFor="let producto of listaProducto">
+    <img [src]="producto.image">
+    <h2>{{producto.nombre}}</h2>
+    <p>{{producto.precio}}</p>
+  </div>
+</div>
+<hr/>
+<h1>Lista de productos</h1>
+<div *ngFor="let producto of listaProducto">
+  <img [src]="producto.image" width="200">
+  <h2>{{producto.nombre}}</h2>
+  <p>{{producto.precio}}</p>
+</div>
+<hr/>
+<h1>*ngFor</h1>
+<button (click)="AgregarNombre()">Agregar Nombre</button>
+<input type="text" [(ngModel)]="newName"/>
+<ul>
+  <li *ngIf="listaName.length ===0">no hay datos</li>
+  <li *ngFor="let name of listaName,index as i">
+    {{i}} - {{name}} <i (click)="EliminarNombre(i)">X</i>
+  </li>
+</ul>
+<h1>*ngIf</h1>
+<p *ngIf="person.name=='Rogger' ; else ngBlockElse">Mi contenido</p>
+<input type="text" [(ngModel)] ="person.name"/>
+<ng-template #ngBlockElse>
+  <p>Su usuario no coincide</p>
+</ng-template>
+<hr/>
+<h1>NgModel</h1>
+<h2>{{person.name}}</h2>
+<input type="text" [(ngModel)] ="person.name"/>
+<hr/>
+<h1>Eventos</h1>
+
+<h2>{{TextoEventoBtn}} {{age}}</h2>
+<button (click)="clickBoton()">Enviar</button>
+<hr/>
+<h1>Propiedades</h1>
+<button [disabled]=disabled>Enviar</button>
+<input type="text" [value] ="name"/>
+<progress max="100" [value]="age"></progress>
+<img [src]="person.img" width="500">
+<hr/>
+<h1>Hola Mundo</h1>
+<h2>{{'Hola Mundo'.repeat(5)}}</h2>
+<p>3 + 3 = {{3+3}}</p>
+<p>Hola soy {{name}} y tengo {{age}}</p>
